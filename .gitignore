@@ -1,0 +1,97 @@
+# Build Folders
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and database files
+*.log
+*.tlog
+*.sql
+*.sqlite
+
+# Visual Studio working files
+.vs/
+.vscode/
+
+# Rider IDE files
+.idea/
+
+# Configuration files
+appsettings.*.json
+
+# Backup files
+*.bak
+*.old
+*.orig
+
+# Package directories
+*.nuget/
+packages/
+.vscode/
+
+# Crash reports
+*.crash
+
+# Resharper files
+_ReSharper.Caches/
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+artifacts/
+
+# Other generated files
+*.generated.cs
+*.designer.cs
+*.g.cs
+*.g.i.cs
+
+# Compiled DLL and EXE
+*.dll
+*.exe
+*.pdb
+
+# Rider settings
+.idea/
+
+# JetBrains Rider File Storage
+.idea/
+
+# Coverage Results
+*.coverage
+*.coveragexml
+_Reports/
+
+# Include files for SQL Server Data Tools
+*.mdf
+*.ldf
+
+# StyleCop
+StyleCop.Cache
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Logs and temporary files
+*.log
+*.tlog
