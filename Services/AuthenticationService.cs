@@ -10,12 +10,14 @@ namespace InventoryManagement.Services
         private readonly UserRepository _userRepository;
         private readonly JwtTokenGenerator _jwtTokenGenerator;
 
+        // Constructor to initialize dependencies
         public AuthenticationService(UserRepository userRepository, JwtTokenGenerator jwtTokenGenerator)
         {
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
+        // Method to authenticate user and generate JWT token
         public async Task<string> AuthenticateAsync(string username, string password)
         {
             var user = await _userRepository.GetUserByUsernameAsync(username);
@@ -27,6 +29,7 @@ namespace InventoryManagement.Services
             return _jwtTokenGenerator.GenerateToken(user);
         }
 
+        // Method to register a new user with hashed password
         public async Task RegisterAsync(User user, string password)
         {
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);

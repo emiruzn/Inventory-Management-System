@@ -9,12 +9,14 @@ namespace InventoryManagement.Services
         private readonly ProductRepository _productRepository;
         private readonly IDatabase _cache;
 
+        // Constructor to initialize dependencies
         public ProductService(ProductRepository productRepository, IConnectionMultiplexer redis)
         {
             _productRepository = productRepository;
             _cache = redis.GetDatabase();
         }
 
+        // Method to get all products, with caching
         public async Task<List<Product>> GetAllProductsAsync()
         {
             var cachedProducts = await _cache.StringGetAsync("products");
@@ -29,6 +31,7 @@ namespace InventoryManagement.Services
             return products;
         }
 
+        // Method to get a product by ID, with caching
         public async Task<Product> GetProductByIdAsync(int id)
         {
             var cachedProduct = await _cache.StringGetAsync($"product:{id}");
@@ -46,6 +49,7 @@ namespace InventoryManagement.Services
                 };
             }
 
+            // Fetch from repository if not in cache
             var product = await _productRepository.GetProductByIdAsync(id);
             if (product != null)
             {

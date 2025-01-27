@@ -15,7 +15,8 @@ namespace InventoryManagement.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-
+        
+        // Endpoint for adding a category. Requires "AdminPolicy" authorization. POST /api/categories
         [Authorize(Policy = "AdminPolicy")]
         [HttpPost]
         public async Task<IActionResult> AddCategory([FromBody] Category category)
@@ -24,6 +25,7 @@ namespace InventoryManagement.Controllers
             return Ok(new { message = "Category added successfully" });
         }
 
+        // Endpoint for getting all categories. Requires "ViewerPolicy" authorization. GET /api/categories
         [Authorize(Policy = "ViewerPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()

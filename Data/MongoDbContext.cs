@@ -13,7 +13,8 @@ namespace InventoryManagement.Configurations
             var client = new MongoClient(settings.Value.ConnectionString);
             _database = client.GetDatabase(settings.Value.DatabaseName);
         }
-
+        
+        // Provides access to the Products collection in the database.
         public IMongoCollection<Product> Products => _database.GetCollection<Product>("Products");
     }
 

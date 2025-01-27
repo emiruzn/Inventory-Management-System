@@ -13,6 +13,7 @@ namespace InventoryManagement.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configures the User entity to ensure that the Username and Email field has a unique index.
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)
                 .IsUnique();

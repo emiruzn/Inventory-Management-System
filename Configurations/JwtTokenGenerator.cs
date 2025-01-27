@@ -16,8 +16,10 @@ namespace InventoryManagement.Services
             _jwtSettings = jwtSettings;
         }
 
+        // Generates a JWT token for the user.
         public string GenerateToken(User user)
         {
+            // Create a list of claims for the user in order to generate a token.
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
@@ -26,9 +28,12 @@ namespace InventoryManagement.Services
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
+            // Create a UTF8 encoded secret key (defined in appsettings.json).
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+            // Define the signing credentials using HMACSHA256 algorithm and the secret key.
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Create a JWT security token with the given claims, expiration time, issuer, and audience.
             var token = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
@@ -37,6 +42,7 @@ namespace InventoryManagement.Services
                 signingCredentials: creds
             );
 
+            // Serialize the JWT token to a string and return it.
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

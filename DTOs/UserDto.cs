@@ -1,5 +1,6 @@
 using InventoryManagement.Entities;
 
+// DTOs designed to handle user operations without exposing the complete User entity.
 namespace InventoryManagement.DTOs
 {
     public class UserRegisterDto

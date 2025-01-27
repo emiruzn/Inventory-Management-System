@@ -16,6 +16,7 @@ namespace InventoryManagement.Controllers
             _productService = productService;
         }
 
+        // Endpoint for adding a product. Requires "ManagerPolicy" authorization. POST /api/products
         [Authorize(Policy = "ManagerPolicy")]
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] Product product)
@@ -24,6 +25,7 @@ namespace InventoryManagement.Controllers
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
 
+        // Endpoint for updating a product. Requires "ManagerPolicy" authorization. PUT /api/products/{id}
         [Authorize(Policy = "ManagerPolicy")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
@@ -32,6 +34,7 @@ namespace InventoryManagement.Controllers
             return NoContent();
         }
 
+        // Endpoint for deleting a product. Requires "ManagerPolicy" authorization. DELETE /api/products/{id}
         [Authorize(Policy = "ManagerPolicy")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
@@ -40,6 +43,7 @@ namespace InventoryManagement.Controllers
             return NoContent();
         }
 
+        // Endpoint for getting a product by ID. Requires "ViewerPolicy" authorization. GET /api/products/{id}
         [Authorize(Policy = "ViewerPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(int id)
@@ -49,6 +53,7 @@ namespace InventoryManagement.Controllers
             return Ok(product);
         }
 
+        // Endpoint for getting all products. Requires "ViewerPolicy" authorization. GET /api/products
         [Authorize(Policy = "ViewerPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
