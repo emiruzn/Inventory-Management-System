@@ -2,6 +2,8 @@
 
 A robust **RESTful API** for managing an inventory system with user role-based access control. This project enables users to manage products within the inventory based on their assigned roles. Designed for scalability and high performance, the application incorporates modern technologies and best practices.
 
+Demo Video: https://drive.google.com/file/d/1jXC-ZnCXjZYL-ikvlxysG9WiWEt5RzBz/view?usp=sharing
+
 ## Key Features
 
 - **User Management**: Supports role-based access control (RBAC) to ensure secure and restricted access to resources.
